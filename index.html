@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sign in | Nova</title>
+    <meta
+      name="description"
+      content="Accessible, responsive login page with semantic HTML and progressive enhancement hooks."
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="page" aria-labelledby="login-title">
+      <section class="login-card" role="region" aria-label="Account login form">
+        <header class="login-card__header">
+          <p class="eyebrow">Welcome back</p>
+          <h1 id="login-title">Sign in to Nova</h1>
+          <p class="subtitle">Use your work account to continue.</p>
+        </header>
+
+        <!--
+          novalidate is intentionally omitted so native browser validation remains active
+          when JavaScript is unavailable. This supports progressive enhancement and
+          accessible error messaging via built-in user agent behavior.
+        -->
+        <form action="#" method="post" class="login-form" aria-describedby="form-help">
+          <p id="form-help" class="sr-only">
+            All fields are required unless otherwise indicated.
+          </p>
+
+          <div class="field">
+            <label for="email">Email or username</label>
+            <input
+              id="email"
+              name="email"
+              type="text"
+              autocomplete="username"
+              required
+              spellcheck="false"
+              inputmode="email"
+              aria-describedby="email-hint"
+            />
+            <p id="email-hint" class="hint">Example: name@company.com</p>
+          </div>
+
+          <div class="field">
+            <div class="field-label-row">
+              <label for="password">Password</label>
+              <!--
+                This toggle is a semantic button hook for optional JS enhancement.
+                Without JS, it remains visible but inactive, and marked disabled.
+              -->
+              <button
+                type="button"
+                class="password-toggle"
+                aria-controls="password"
+                aria-pressed="false"
+                disabled
+              >
+                Show
+              </button>
+            </div>
+            <input
+              id="password"
+              name="password"
+              type="password"
+              autocomplete="current-password"
+              required
+              minlength="8"
+              aria-describedby="password-hint"
+            />
+            <p id="password-hint" class="hint">Minimum 8 characters.</p>
+          </div>
+
+          <div class="form-row">
+            <label class="checkbox">
+              <input type="checkbox" name="remember" />
+              <span>Remember me</span>
+            </label>
+            <a class="link" href="#" rel="help">Forgot password?</a>
+          </div>
+
+          <!--
+            Status containers are present for server-side rendered messages.
+            Use only one at a time in production (error OR success).
+          -->
+          <p class="message message--error" role="alert">
+            Incorrect email or password. Please try again.
+          </p>
+          <p class="message message--success" role="status" aria-live="polite" hidden>
+            Success! Redirecting to your dashboard...
+          </p>
+
+          <button type="submit" class="submit">Sign in</button>
+
+          <!--
+            Loading state sample: remove hidden and optionally disable submit
+            when processing a request on the server.
+          -->
+          <p class="loading" role="status" aria-live="polite" hidden>
+            Signing you in...
+          </p>
+        </form>
+      </section>
+    </main>
+
+    <!--
+      Optional enhancement guide:
+      1) Enable password toggle by removing disabled and toggling input type.
+      2) Update aria-pressed + button text (Show/Hide).
+      3) Optionally inject live validation and password strength meter as
+         progressive enhancement while keeping native validation intact.
+    -->
+  </body>
+</html>
